@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta ❤️</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:linear-gradient(135deg,#111,#1d1d1d);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:Georgia, serif;
+      overflow:hidden;
+      padding:20px;
+    }
+
+    .book{
+      position:relative;
+      width:350px;
+      height:560px;
+      perspective:2000px;
+    }
+
+    .page{
+      position:absolute;
+      width:100%;
+      height:100%;
+      border-radius:16px;
+      padding:35px;
+      transform-origin:left;
+      transition:1s;
+      box-shadow:0 15px 40px rgba(0,0,0,0.4);
+      backface-visibility:hidden;
+      overflow-y:auto;
+    }
+
+    .cover{
+      background:linear-gradient(145deg,#6b2d2d,#8d4444);
+      color:white;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      cursor:pointer;
+      z-index:3;
+    }
+
+    .cover h1{
+      font-size:2rem;
+      line-height:1.5;
+      font-weight:normal;
+    }
+
+    .inside{
+      background:#f7ecd7;
+      color:#2b2b2b;
+      line-height:2;
+      font-size:1.05rem;
+      z-index:2;
+    }
+
+    .inside p{
+      margin-bottom:22px;
+    }
+
+    .signature{
+      margin-top:30px;
+      text-align:right;
+      font-style:italic;
+      line-height:1.8;
+    }
+
+    .open{
+      transform:rotateY(-160deg);
+    }
+
+    .next-btn{
+      position:absolute;
+      right:-65px;
+      top:50%;
+      transform:translateY(-50%);
+      width:55px;
+      height:55px;
+      border:none;
+      border-radius:50%;
+      background:white;
+      font-size:24px;
+      cursor:pointer;
+      box-shadow:0 5px 20px rgba(0,0,0,0.3);
+      display:none;
+      transition:0.3s;
+    }
+
+    .next-btn:hover{
+      transform:translateY(-50%) scale(1.1);
+    }
+
+    .second-page{
+      background:#f7ecd7;
+      color:#2b2b2b;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      font-size:1.3rem;
+      line-height:2;
+      padding:30px;
+      z-index:1;
+      opacity:0;
+      transition:1s;
+    }
+
+    .show{
+      opacity:1;
+    }
+
+    .heart{
+      font-size:2rem;
+      margin-top:20px;
+      animation:pulse 1.5s infinite;
+    }
+
+    @keyframes pulse{
+      0%{
+        transform:scale(1);
+      }
+
+      50%{
+        transform:scale(1.15);
+      }
+
+      100%{
+        transform:scale(1);
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="book">
+
+    <div class="page cover" id="cover">
+      <h1>
+        Clique para abrir<br>
+        sua carta ❤️
+      </h1>
+    </div>
+
+    <div class="page inside">
+
+      <p>
+        Esse é meu jeito nerd de te entregar uma carta.
+      </p>
+
+      <p>
+        Só queria te lembrar do quanto você é incrível
+        e o quanto eu admiro a força que você tem,
+        mesmo nos dias mais cansativos.
+      </p>
+
+      <p>
+        Espero que você consiga descansar sua mente
+        e pegar mais leve com si mesma hoje.
+      </p>
+
+      <p>
+        Você merece carinho,
+        cuidado
+        e alguém que esteja do seu lado até nos dias mais difíceis.
+      </p>
+
+      <p>
+        E bom...
+        achei mais legal fazer isso em forma de site
+        porque combina comigo.
+      </p>
+
+      <button class="next-btn" id="nextBtn">
+        ➜
+      </button>
+
+    </div>
+
+    <div class="page second-page" id="secondPage">
+
+      <div>
+        Espero que essa cartinha
+        tenha deixado seu dia
+        um pouquinho mais leve ❤️
+
+        <div class="heart">
+          ❤️
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const cover = document.getElementById("cover");
+    const nextBtn = document.getElementById("nextBtn");
+    const secondPage = document.getElementById("secondPage");
+
+    cover.addEventListener("click", () => {
+      cover.classList.add("open");
+      nextBtn.style.display = "block";
+    });
+
+    nextBtn.addEventListener("click", () => {
+      secondPage.classList.add("show");
+    });
+
+  </script>
+
+</body>
+</html>
